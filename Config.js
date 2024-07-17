@@ -28,8 +28,8 @@ global.prefa = process.env.PREFIX || ".",
 //false=disable and true=enable
 global.welcome = process.env.WELCOME || "false", //auto welcome
 global.autoRecording = false //auto recording
-global.autoTyping = false //auto typing
-global.autorecordtype = false //auto typing + recording
+global.autoTyping = true //auto typing
+global.autorecordtype = true //auto typing + recording
 global.autoread = false //auto read messages
 global.autobio = false //auto update bio
 global.anti212 = true //auto block +212
