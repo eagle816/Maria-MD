@@ -28,7 +28,7 @@ const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./Gallery/l
 const { toAudio, toPTT, toVideo, ffmpeg, addExifAvatar } = require('./Gallery/lib/converter')
 const { smsg, getGroupAdmins, formatp, jam, formatDate, getTime, isUrl, await, sleep, clockString, msToDate, sort, toNumber, enumGetKey, runtime, fetchJson, getBuffer, json, format, logic, generateProfilePicture, parseMention, getRandom, pickRandom, reSize } = require('./Gallery/lib/myfunc')
 let afk = require("./Gallery/lib/afk");
-
+const { download } = require('aptoide-scraper');
 const { fetchBuffer, buffergif } = require("./Gallery/lib/myfunc2")
 
 /////log
@@ -180,7 +180,11 @@ Maria.sendMessage(m.chat,
 contextInfo:{
 mentionedJid:[sender],
 forwardingScore: 9999999,
-isForwarded: true, 
+isForwarded: true,
+forwardedNewsletterMessageInfo: {
+newsletterName: "AYUSH BOTZ INC",
+newsletterJid: "120363213314329067@newsletter",
+},
 "externalAdReply": {
 "showAdAttribution": true,
 "containsAutoReply": true,
@@ -385,7 +389,7 @@ async function Telesticker(url) {
     
  ///antilink 
  if (AntiLinkAll)
-               if (budy.match('http') && budy.match('https'))   
+               if (budy.match('chat.whatsapp.com') && budy.match('https'))   
    {
 if (!isBotAdmins) return
 bvl = `\`\`\`「 Link Detected 」\`\`\`\n\nyou are a group admin thats why i wont kick you, but remember from next time`
@@ -598,63 +602,7 @@ sendSlide(m.chat, 'MARIA-MD', 'Here the Maria-MD deploy tutorial', botname, sli
 }
 break
 
-case 'test': {
-let xmenu_oh = `Hi ${pushname}`
-let msg = generateWAMessageFromContent(from, {
-  viewOnceMessage: {
-    message: {
-        "messageContextInfo": {
-          "deviceListMetadata": {},
-          "deviceListMetadataVersion": 2
-        },
-        interactiveMessage: proto.Message.InteractiveMessage.create({
-          body: proto.Message.InteractiveMessage.Body.create({
-            text: ownername
-          }),
-          footer: proto.Message.InteractiveMessage.Footer.create({
-            text: botname
-          }),
-          header: proto.Message.InteractiveMessage.Header.create({
-            title: xmenu_oh,
-            subtitle: themeemoji,
-            hasMediaAttachment: false
-          }),
-          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-            buttons: [
-              {
-                "name": "single_select",
-                "buttonParamsJson": 
-`{"title":"MENU ",
-"sections":[{"title":"${ownername}",
-"highlight_label":"${botname}",
-"rows":[{"header":"ALL MENU",
-"title":"click to display",
-"description":"Displays The List Of All The Features",
-"id":"${prefix}menu"}]
-}]
-}`
-              },
-              
-           ],
-          }),
-          contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363222395675670@newsletter',
-                  newsletterName: ownername,
-                  serverMessageId: 143
-                }
-                }
-        })
-    }
-  }
-}, { quoted: m })
-await Maria.relayMessage(msg.key.remoteJid, msg.message, {
-  messageId: msg.key.id
-})}
-break
+
 
             
             case 'stealdp': {
@@ -2227,7 +2175,7 @@ break;
  🎀𝐅𝐨𝐥𝐥𝐨𝐰 𝐨𝐧: https://www.instagram.com/ayushpandeyy_023
 
 Here's the list of my Commands.🔖
-
+ 
 ┌──⊰ _*🧧GENERAL🧧*_
 │⊳ 🌿 ${prefix}hi
 │⊳ 🌿 ${prefix}dev
@@ -2326,6 +2274,10 @@ Here's the list of my Commands.🔖
 │⊳ 📥 ${prefix}igvideo 
 │⊳ 📥 ${prefix}pinterest
 │⊳ 📥 ${prefix}apk
+│⊳ 📥 ${prefix}mediafire
+│⊳ 📥 ${prefix}gitclone
+│⊳ 📥 ${prefix}telestick
+│⊳ 📥 ${prefix}tgs
 └──────────⊰
 ┌──⊰ _*✨️WALLPAPER✨️*_
 │⊳ 🎴 ${prefix}Doraemon
@@ -2432,7 +2384,17 @@ Here's the list of my Commands.🔖
               }
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -2621,7 +2583,17 @@ let gmsg = generateWAMessageFromContent(from, {
               }
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -2685,7 +2657,17 @@ let emsg = generateWAMessageFromContent(from, {
 
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -2746,7 +2728,17 @@ await Maria.relayMessage(emsg.key.remoteJid, emsg.message, {
 
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -2822,7 +2814,17 @@ let owmsg = generateWAMessageFromContent(from, {
 
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -2896,7 +2898,17 @@ await Maria.relayMessage(owmsg.key.remoteJid, owmsg.message, {
 
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -2975,7 +2987,17 @@ let funmsg = generateWAMessageFromContent(from, {
 
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -2996,6 +3018,10 @@ await Maria.relayMessage(funmsg.key.remoteJid, funmsg.message, {
 │⊳ 📥 ${prefix}igvideo 
 │⊳ 📥 ${prefix}pinterest
 │⊳ 📥 ${prefix}apk
+│⊳ 📥 ${prefix}mediafire
+│⊳ 📥 ${prefix}gitclone
+│⊳ 📥 ${prefix}telestick
+│⊳ 📥 ${prefix}tgs
 └──────────⊰
 `
 let dowmsg = generateWAMessageFromContent(from, {
@@ -3040,7 +3066,17 @@ let dowmsg = generateWAMessageFromContent(from, {
 
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -3101,7 +3137,17 @@ let wallmsg = generateWAMessageFromContent(from, {
               }
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -3172,7 +3218,17 @@ await Maria.relayMessage(wallmsg.key.remoteJid, wallmsg.message, {
               }
 
            ],
-          })
+          }),
+contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -3252,7 +3308,17 @@ let othmsg = generateWAMessageFromContent(from, {
               }
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -3318,7 +3384,17 @@ await Maria.relayMessage(othmsg.key.remoteJid, othmsg.message, {
               }
 
            ],
-          })
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
         })
     }
   }
@@ -3401,7 +3477,7 @@ let msg = generateWAMessageFromContent(from, {
                   forwardingScore: 999,
                   isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                  newsletterJid: '919931122319@s.whatsapp.net',
+                  newsletterJid: '120363213314329067@newsletter',
                   newsletterName: "AYUSH BOTZ INC",
                   serverMessageId: 143
                 }
@@ -3486,7 +3562,7 @@ let liistmsg = generateWAMessageFromContent(from, {
    },
    {
   "name": "quick_reply",
-  "buttonParamsJson": `{"display_text":"⛩️OTHERS⛩️","id":"${prefix}othermenu"}`
+  "buttonParamsJson": `{"display_text":"⛩️OTHERS⛩️","id":"${prefix}othersmenu"}`
    },
    {
   "name": "quick_reply",
@@ -3503,7 +3579,7 @@ let liistmsg = generateWAMessageFromContent(from, {
                   forwardingScore: 999,
                   isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                  newsletterJid: '9931122319@newsletter',
+                  newsletterJid: '120363213314329067@newsletter',
                   newsletterName: "AYUSH BOTZ INC",
                   serverMessageId: 143
                 }
@@ -4076,48 +4152,159 @@ case 'runtime': {
             	}
             break;
 			///////////////////////////////////////////////////////
-case 'igimage':
-case 'igimg':{
-if (!text) return reply("🧩Link?")
-let resMaria = await fetch(`https://vihangayt.me/download/instagram?url=${text}`)
-let jsonMaria = await resMaria.json()
-Maria.sendMessage(m.chat, { image: { url: jsonMaria.data.data[0].url }, caption: mess.done}, {quoted:m})
-.catch(console.error)
+case 'instagram': case 'ig': case 'igvideo': case 'igimage': case 'igvid': case 'igimg': {
+	  if (!text) return reply(`You need to give the URL of Any Instagram video, post, reel, image`)
+  let res
+  try {
+    res = await fetch(`https://www.guruapi.tech/api/igdlv1?url=${text}`)
+  } catch (error) {
+    return reply(`An error occurred: ${error.message}`)
+  }
+  let api_response = await res.json()
+  if (!api_response || !api_response.data) {
+    return reply(`No video or image found or Invalid response from API.`)
+  }
+  const mediaArray = api_response.data;
+  for (const mediaData of mediaArray) {
+    const mediaType = mediaData.type
+    const mediaURL = mediaData.url_download
+    let cap = `HERE IS THE ${mediaType.toUpperCase()}`
+    if (mediaType === 'video') {
+    	let msgs = generateWAMessageFromContent(m.chat, {
+  viewOnceMessage: {
+    message: {
+        "messageContextInfo": {
+          "deviceListMetadata": {},
+          "deviceListMetadataVersion": 2
+        },
+        interactiveMessage: proto.Message.InteractiveMessage.create({
+          body: proto.Message.InteractiveMessage.Body.create({
+            text: cap
+          }),
+          footer: proto.Message.InteractiveMessage.Footer.create({
+            text: botname
+          }),
+          header: proto.Message.InteractiveMessage.Header.create({
+          hasMediaAttachment: false,
+          ...await prepareWAMessageMedia({ video: {url: mediaURL}}, { upload: Maria.waUploadToServer })
+          }),
+          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            buttons: [{
+            "name": "quick_reply",
+              "buttonParamsJson": `{\"display_text\":\"Menu✨\",\"id\":\"${prefix}help"}`
+            },
+                        {
+            "name": "quick_reply",
+              "buttonParamsJson": `{\"display_text\":\"Script🎀\",\"id\":\"${prefix}sc"}`
+            }],
+          }), 
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH Botz.Inc",
+                  serverMessageId: 143
+                }
+                }
+       })
+    }
+  }
+}, { quoted: m })
+return await Maria.relayMessage(m.chat, msgs.message, {})
+    } else if (mediaType === 'image') {
+    	let msgs = generateWAMessageFromContent(m.chat, {
+  viewOnceMessage: {
+    message: {
+        "messageContextInfo": {
+          "deviceListMetadata": {},
+          "deviceListMetadataVersion": 2
+        },
+        interactiveMessage: proto.Message.InteractiveMessage.create({
+          body: proto.Message.InteractiveMessage.Body.create({
+            text: cap
+          }),
+          footer: proto.Message.InteractiveMessage.Footer.create({
+            text: botname
+          }),
+          header: proto.Message.InteractiveMessage.Header.create({
+          hasMediaAttachment: false,
+          ...await prepareWAMessageMedia({ image: {url: mediaURL}}, { upload: Maria.waUploadToServer })
+          }),
+          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            buttons: [{
+            "name": "quick_reply",
+              "buttonParamsJson": `{\"display_text\":\"Menu✨\",\"id\":\"${prefix}help"}`
+            },
+            {
+            "name": "quick_reply",
+              "buttonParamsJson": `{\"display_text\":\"Script🎀\",\"id\":\"${prefix}sc"}`
+            }],
+          }), 
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH Botz.Inc",
+                  serverMessageId: 143
+                }
+                }
+       })
+    }
+  }
+}, { quoted: m })
+return await Maria.relayMessage(m.chat, msgs.message, {})
+    }
+  }
 }
-break;
-case 'igvideo':
-case 'igvid':{
-if (!q) return  reply("🧩Link?")
-let res = await fetch(`https://vihangayt.me/download/instagram?url=${q}`)
-let json = await res.json()
-Maria.sendMessage(m.chat, { video: { url: json.data.data[0].url }, caption: mess.done}, {quoted: m})
-.catch(console.error)
-}
-break;
+break
 
-case 'apk':
-case 'apkdl':{
-if (!text) return reply("🧩What apk u wanna download?")
-let resMaria = await fetch(`https://vihangayt.me/download/apk?id=${text}`)
-let jsonMaria = await resMaria.json()
-Maria.sendMessage(from, { document: { url: jsonMaria.data.dllink}, fileName : jsonMaria.data.name, mimetype: 'application/vnd.android.package-archive'}, {quoted:m})
-.catch(console.error)
-}
-break;
+case 'apk': {
+  try {
+    if (command === 'apk') {
+      if (!text) return reply(`*[📝] Please provide the APK Name you want to download.*`);
+      let data = await download(text);
+      if (data.size.replace(' MB', '') > 200) {
+        return await Maria.sendMessage(m.chat, { text: '*[📦] The file is too large.*' }, { quoted: m });
+      }
+      if (data.size.includes('GB')) {
+        return await Maria.sendMessage(m.chat, { text: '*[🚫] The file is too large.*' }, { quoted: m });
+      }
+      await Maria.sendMessage(
+        m.chat,
+        { document: { url: data.dllink }, mimetype: 'application/vnd.android.package-archive', fileName: data.name + '.apk', caption: null },
+        { quoted: m }
+      );
+    }
+  } catch {
+    return reply(`*[❗️] An error occurred. Make sure to provide a valid link.*`);
+  }
+};
+break
 
 case 'mediafire': {
-	if (args.length == 0) return reply(`🧩Where is the link ?`)
-	if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return reply(`🧩The link you provided is invalid`)
-	const { mediafireDl } = require('./Gallery/lib/mediafire.js')
-	const baby1 = await mediafireDl(text)
-	if (baby1[0].size.split('MB')[0] >= 100) return reply('Oops, the file is too big...')
-	const result4 = `𝙈𝙀𝘿𝙄𝘼𝙁𝙄𝙍𝙀
-*❖ Name* : ${baby1[0].nama}
-*❖ Size* : ${baby1[0].size}
-*❖ Mime* : ${baby1[0].mime}
-*❖ Link* : ${baby1[0].link}`
-reply(`${result4}`)
-Maria.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m })
+  if (!args[0]) return reply(`*[📝] Please enter the MediaFire link next to the command.*`);
+  if (!args[0].match(/mediafire/gi)) return reply(`*[🔗] Incorrect link. Please provide a valid MediaFire link.*`);
+  
+  const { mediafiredl } = require('@bochilteam/scraper');
+  let full = /f$/i.test(command);
+  let u = /https?:\/\//.test(args[0]) ? args[0] : 'https://' + args[0];
+  let res = await mediafiredl(args[0]);
+  
+  let { url, url2, filename, ext, aploud, filesize, filesizeH } = res;
+  let caption = `
+  ≡ *MEDIAFIRE DOWNLOAD*
+
+  📄 *File Name:* ${filename}
+  📦 *Size:* ${filesizeH}
+  🛠 *Extension:* ${ext}
+  📅 *Uploaded:* ${aploud}
+  `.trim();
+  
+  Maria.sendMessage(m.chat, { document: { url: url }, fileName: filename, mimetype: ext }, { quoted: m });
 }
 break;
 
@@ -4148,7 +4335,7 @@ break;
 
 
 
-case 'telestick':{
+case 'telestick': case 'tgs':{
 		if (args[0] && args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
 		let mariaresources = await Telesticker(args[0])
 		await reply(`Sending ${mariaresources.length} stickers...`)
@@ -4276,13 +4463,43 @@ https://chat.whatsapp.com/${response}
           }
         }
         break;
-        case 'test': case 'p': case 'ping': 
-        let timestampe = speed()
-        let latensie = speed() - timestampe
-         reply(`🧧Testing successfull, Bot is active\n\n📍*ping* ${latensie.toFixed(4)} miliseconds\n\n🎀Type ${prefix}help to display the menu`)
-        break;   
-    
-        
+ case 'p':
+case 'ping': 
+    let thumbnail = './Gallery/thumb.jpg';
+    let fgg = {
+        key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' },
+        message: {
+            contactMessage: {
+                displayName: 'MARIA-MD 📱',
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:MARIA-MD 📱\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+            }
+        }
+    };
+
+    let pingMsg = await Maria.sendMessage(m.chat, { text: '🔄 Checking connectivity...' }, { quoted: fgg });
+    await sleep(2000);
+    let timestamp = speed();
+
+    await exec('neofetch --stdout', async (error, stdout) => {
+        let latency = (speed() - timestamp).toFixed(4);
+
+        await Maria.relayMessage(
+            m.chat,
+            {
+                protocolMessage: {
+                    key: pingMsg.key,
+                    type: 14,
+                    editedMessage: {
+                        conversation: `⚡ Speed test result: ${latency} ms 🚀`
+                    }
+                }
+            },
+            {}
+        );
+
+        await Maria.sendMessage(m.chat, { text: '🎉 Connection is stable and fast!' }, { quoted: pingMsg });
+    });
+    break;
   case 'mods':
 case 'developer':
 case 'dev':
@@ -4782,9 +4999,63 @@ _For everything else, use common sense._
 *_🚀Team Ayush_*
 
 ⍟ *────────────────* ⍟`
+ let mariajpg= "https://graph.org/file/c8ad7dc322c0b9b7eca8f.jpg" 
+ 
+let tifxmsg = generateWAMessageFromContent(from, {
+  viewOnceMessage: {
+    message: {
+        "messageContextInfo": {
+          "deviceListMetadata": {},
+          "deviceListMetadataVersion": 2
+        },
+        interactiveMessage: proto.Message.InteractiveMessage.create({
+          body: proto.Message.InteractiveMessage.Body.create({
+            text: ""
+          }),
+          footer: proto.Message.InteractiveMessage.Footer.create({
+            text: botname
+          }),
+                    header: proto.Message.InteractiveMessage.Header.create({
+                ...(await prepareWAMessageMedia({ image: { url: "https://graph.org/file/c8ad7dc322c0b9b7eca8f.jpg" }}, { upload: Maria.waUploadToServer})), 
+            title: tifx,
+            subtitle: themeemoji,
+            hasMediaAttachment: false
+          }),
+          nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+            buttons: [
 
-Maria.sendMessage(m.chat, { image: { url: "https://graph.org/file/c8ad7dc322c0b9b7eca8f.jpg" }, caption: tifx, gifPlayback: true }, { quoted: m });
-        break;
+              {
+                 "name": "cta_url",
+                 "buttonParamsJson": "{\"display_text\":\"WhatsApp🚀 \",\"url\":\"https://whatsapp.com/channel/0029VaImo5ZG3R3qjKOdyr1I\",\"merchant_url\":\"https://www.google.com\"}"
+              },
+              {
+                 "name": "cta_url",
+                 "buttonParamsJson": "{\"display_text\":\"Youtube 🥵 \",\"url\":\"https://youtube.com/@maria-md\",\"merchant_url\":\"https://www.google.com\"}"
+              }
+
+           ],
+          }),
+          contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
+        })
+    }
+  }
+}, {})
+
+await Maria.relayMessage(tifxmsg.key.remoteJid, tifxmsg.message, {
+  messageId: tifxmsg.key.id
+})
+ break
+    
+     
         
         
 case '': {
@@ -4816,7 +5087,17 @@ case '': {
                   buttonParamsJson: `{"display_text":"HELP✨️","id":"${prefix}help"}`
                 }
               ],
-            })
+            }) ,
+            contextInfo: {
+                  mentionedJid: [m.sender], 
+                  forwardingScore: 999,
+                  isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363213314329067@newsletter',
+                  newsletterName: "AYUSH BOTZ INC",
+                  serverMessageId: 143
+                }
+                }
           })
         }
       }
